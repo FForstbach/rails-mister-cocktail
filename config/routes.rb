@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'doses/create'
+
+  get 'doses/destroy'
+
   get 'new/create'
 
   get 'new/destroy'
