@@ -8,3 +8,21 @@
 
 require 'open-uri'
 require 'json'
+
+# Ingredient.create(name: "Light rum")
+# Ingredient.create(name: "Scotch")
+# Ingredient.create(name: "Orange bitters")
+# Ingredient.create(name: "Gin")
+
+Ingredient.destroy_all
+
+url = 'http://www.thecocktaildb.com/api/json/v1/1/list.php?i=list'
+list_serialized = open(url).read
+list_of_ingredients = JSON.parse(list_serialized)
+ingredients = list_of_ingredients["drinks"]
+
+ingredients.each do |ingredient|
+  Ingredient.create(name: ingredient["strIngredient1"])
+end
+
+
