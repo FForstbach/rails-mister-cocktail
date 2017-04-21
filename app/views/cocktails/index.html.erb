@@ -15,17 +15,20 @@
 </div> -->
 
 <div class="container">
-  <div class="row">
+  <div class="row text-center">
     <h1>Show Cocktails</h1>
     <% @cocktails.each do |cocktail| %>
-      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('http://www.unsplash.it/700/300?image=123');">
-        <div class="card-category"> <%= ["Best Cocktails", "Evergreen", "Bills Favorite"].sample %></div>
-        <div class="card-description">
-          <h2><%= cocktail.name %></h2>
-        </div>
-        <img class="card-user avatar" src="http://www.fillmurray.com/300/300">
-        <a class="card-link" href=" <%= cocktail_path(cocktail) %>" ></a>
+      <div class="col-xs-12 col-sm-6">
+        <div class="card" style="background-image: linear-gradient(rgba(150,150,150,0.3), rgba(100,100,100,0.2)),
+url('<%= cl_image_path cocktail.photo, height: 300, width: 400, crop: :fill %>')">
+          <div class="card-category"> <%= ["Best Cocktails", "Evergreen", "Bills Favorite"].sample %></div>
+          <div class="card-description">
+            <h2><%= cocktail.name %></h2>
+          </div>
+          <img class="card-user avatar-large" src="http://www.fillmurray.com/500/500">
+          <a class="card-link" href=" <%= cocktail_path(cocktail) %>" ></a>
 
+        </div>
       </div>
     <% end %>
 
